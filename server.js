@@ -29,7 +29,7 @@ let corsOptions = {
   },
   credentials: true,
 }
-app.use(cors(corsOptions))
+app.use(cors(config.corsOptions))
 
 //add access allow origin to all requests
 app.use((req, res, next) => {
