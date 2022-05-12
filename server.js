@@ -16,16 +16,6 @@ const PORT = process.env.PORT || 3500
 // Connect to MongoDB
 connectDB()
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://bitmama-rm.netlify.app') // update to match the domain you will make the request from
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept',
-  )
-  res.header('Access-Control-Allow-Credentials', 'true')
-  next()
-})
-
 // custom middleware logger
 app.use(logger)
 
@@ -34,8 +24,7 @@ app.use(logger)
 app.use(credentials)
 
 // Cross Origin Resource Sharing
-app.use(cors(corsOptions))
-app.use(cors())
+app.use(cors({ origin: '*' }))
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }))
