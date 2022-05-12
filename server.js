@@ -13,6 +13,19 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
+// Cross Origin Resource Sharing
+app.use(cors({ origin: 'https://bitmama-rm.netlify.app' }))
+
+//add access allow origin to all requests
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://bitmama-rm.netlify.app')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  )
+  next()
+})
+
 // Connect to MongoDB
 connectDB()
 
@@ -22,19 +35,6 @@ app.use(logger)
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
 app.use(credentials)
-
-// Cross Origin Resource Sharing
-app.use(cors({ origin: 'https://bitmama-rm.netlify.app' }))
-
-//add access allow origin to all requests
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  )
-  next()
-})
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }))
