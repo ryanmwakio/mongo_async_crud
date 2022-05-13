@@ -13,11 +13,6 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
-var corsOptions = {
-  origin: 'https://bitmama-rm.netlify.app',
-  optionsSuccessStatus: 200,
-}
-
 app.use(cors(corsOptions))
 
 app.use(function (req, res, next) {
