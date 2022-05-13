@@ -13,23 +13,8 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
-// Cross Origin Resource Sharing
-let whitelist = [
-  'http://localhost:3000',
-  'http://localhost:80',
-  'https://bitmama-rm.netlify.app',
-]
-let corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  credentials: true,
-}
-app.use(cors(config.corsOptions))
+
+app.use(cors())
 
 //add access allow origin to all requests
 app.use((req, res, next) => {
