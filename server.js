@@ -20,6 +20,15 @@ var corsOptions = {
 
 app.use(cors(corsOptions))
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://bitmama-rm.netlify.app') // update to match the domain you will make the request from
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept',
+  )
+  next()
+})
+
 // Connect to MongoDB
 connectDB()
 
