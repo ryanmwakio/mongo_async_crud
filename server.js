@@ -14,7 +14,7 @@ const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
 const corsOptions = {
-  origin: 'https://bitmama-rm.netlify.app',
+  origin: '*',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
