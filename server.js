@@ -14,7 +14,7 @@ const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
 const corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:3000',
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
