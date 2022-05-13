@@ -13,20 +13,7 @@ const mongoose = require('mongoose')
 const connectDB = require('./config/dbConn')
 const PORT = process.env.PORT || 3500
 
-
-app.use(cors())
-
-//add access allow origin to all requests
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://bitmama-rm.netlify.app')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  )
-  res.header('Access-Control-Allow-Credentials', true)
-
-  next()
-})
+app.use(cors(corsOptions))
 
 // Connect to MongoDB
 connectDB()
